@@ -1,0 +1,27 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+	@{ var content = Umbraco.Content(
+1050); }
+<div class="con-1">
+    <ul class="fa-ul">
+        <li><i class="fa-li fa fa-building"></i>
+            <p> <strong>@content.companyName</strong></p>
+
+        </li>
+        <li><i class="fa-li fa fa-phone"></i>
+            <strong> @content.phoneNumber</strong>
+
+        </li>
+        <li><i class="fa-li fa fa-home"></i>
+
+            <p>
+                <strong> @content.address</strong></p>
+            <p><strong> @content.zipcode @content.city</strong></p>
+
+
+        </li>
+        <li>
+            <i class="fa-li fa fa-envelope"></i>
+            <a href="mailto:@content.email">@content.email</a>
+        </li>
+    </ul>
+</div>

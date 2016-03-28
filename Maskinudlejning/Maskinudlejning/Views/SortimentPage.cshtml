@@ -1,0 +1,78 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.SortimentPage>
+    @using ContentModels = Umbraco.Web.PublishedContentModels;
+    @{
+    Layout = "layout.cshtml";
+    var skip = 0;
+      var take = 10;
+    }
+
+<div class="con-1 sortiment">
+    <div class="scrollable">
+        <table id="myTable" class="tablesorter">
+            <thead>
+                <tr>
+                    <th>Varenr.</th>
+                    <th>Gruppe</th>
+                    <th>Beskrivelse</th>
+                    <th>Størrelse</th>
+                    <th>Drivkraft</th>
+                    <th>Leje/dag</th>
+                    <th>Pris</th>
+                    <th>Tilføj til kurv</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                if (Model.Content.HasValue("sortiment")){
+                var node = Umbraco.TypedContent(Model.Content.GetPropertyValue<int>("sortiment"));
+                
+                    if(Request.QueryString["page"] != null)
+                    {
+                     skip = (int.Parse(Request.QueryString["page"])-1) * take;
+                    }
+                    foreach (var item in node.Children.Where("Visible").Skip(skip).Take(take))
+                    {
+                    var content = Umbraco.Content(@item.Id);
+                    <tr>
+                        <td>@content.partNo</td>
+                        <td>@content.group</td>
+                        <td>@content.description</td>
+                        <td>@content.size</td>
+                        <td>@content.force</td>
+                        <td>@content.rentday</td>
+                        <td>@content.price</td>
+                        <td><a href="#" class="medium addButton add-cart" data-val="@content.Id" data-type="sortiment">Tilføj</a></td>
+                    </tr>
+                    }
+                    
+                    }
+                    
+                    }
+
+            </tbody>
+        </table>
+        @{        
+        if (Model.Content.HasValue("sortiment")){
+        var node = Umbraco.TypedContent(Model.Content.GetPropertyValue<int>
+            ("sortiment"));
+            if (node.Children.Where("Visible").Count() > 1)
+            {
+            <ul class="paging">
+                <li>Page:
+                @if(Request.QueryString["page"] != null){ <strong>@int.Parse(Request.QueryString["page"])</strong>}
+                else {
+                    <strong>1</strong>
+                }</li>
+                @if(node.Children.Where("Visible").Count() > 10)
+                {
+                for (var i = 1; node.Children.Where("Visible").Count() / 10 +2 > i; i++ )
+                {
+                <li><a href="?page=@i">@i</a></li>
+                }
+                }
+            </ul>
+            }
+        }
+        }
+</div>
+</div>

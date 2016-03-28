@@ -1,0 +1,39 @@
+﻿@inherits Umbraco.Web.Macros.PartialViewMacroPage
+
+@{ var startNodeId = Model.MacroParameters["startNodeId"]; }
+@if (startNodeId != null)
+{
+    var startNode = Umbraco.Content(startNodeId);
+    var selection = startNode.Children.Where("Visible");
+<div class="right">
+    <i class="fa fa-bars" id="menu"></i>
+
+    <div class="cart right">
+         <p id="items"></p><a href="@Umbraco.Content(" 1106").Url"><i class="fa fa-shopping-cart"></i></a>
+    </div>
+</div>
+<a href="@startNode.Url">
+    <img src="@Umbraco.Media(startNode.logo).Url" />
+</a>
+<div id="mobile" class="hide">
+    @if (selection.Any())
+    {
+    <ul>
+        <li>
+            <a href="@startNode.Url">@startNode.Name</a>
+        </li>
+        <li>
+            <a target="_blank" href="@startNode.catalogPdf">Hent katalog</a>
+        </li>
+        @foreach (var item in selection)
+        {
+        <li>
+            <a href="@item.Url">@item.Name</a>
+        </li>
+        }
+    </ul>
+    }
+
+</div>
+}
+<div class="clear"></div>

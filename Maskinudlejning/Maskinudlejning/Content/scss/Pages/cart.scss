@@ -1,0 +1,38 @@
+﻿
+.cart-items {
+    table {
+        width: 100%;
+        border-collapse:collapse;
+        th {
+            padding: 20px 10px;
+            text-align:left;
+            cursor:pointer;
+        }
+
+        td {
+            padding: 20px 10px;
+            border-bottom: 1px solid #fff;
+            width:25%;
+            .add-button {
+                margin-left:4px;
+
+            }
+            .substract-button {
+                margin-right:4px;
+
+            }
+        }
+
+        tbody {
+            td {
+          &:nth-child(2n+0) {
+                    background-color: #a5c6d7;
+                }
+
+                &:nth-child(2n+1) {
+                    background-color: #96b4c3;
+                }
+            }
+        }
+    }
+}

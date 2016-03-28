@@ -1,0 +1,32 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/t/dt/jqc-1.12.0,dt-1.10.11/datatables.min.css" />
+    <link href="~/Content/css/main.css" rel="stylesheet" />
+</head>
+<body>
+    <header class="header-l">
+        <div class="container">
+            <nav class="menu">
+                @Umbraco.RenderMacro("menu", new {startNodeId="1050"})
+            </nav>
+				<nav class="menu-mobile">
+                @Umbraco.RenderMacro("menuMobile", new {startNodeId="1050"})</nav>
+        </div>
+    </header>
+    <div class="content">
+        <div class="container">
+            @RenderBody()
+            <div class="sponsor-list">@Umbraco.RenderMacro("sponsorlist", new {mediaId="1055"}) </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            @RenderPage("~/Views/Partials/FooterSection.cshtml")
+        </div>
+    </footer>
+
+    <script src="~/Content/js/main.js"></script>
+</body>
+</html>

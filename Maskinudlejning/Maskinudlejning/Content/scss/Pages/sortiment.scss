@@ -1,0 +1,41 @@
+﻿.sortiment {
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+
+        th {
+            padding: 20px 10px;
+            text-align:left;
+            cursor:pointer;
+        }
+        tr {
+            min-height: 100px;
+        }
+        td {
+            padding: 20px 10px;
+            vertical-align:text-top;
+            border-bottom: 1px solid #fff;
+        }
+
+        tbody {
+            td {
+                &:nth-child(2n+0) {
+                    background-color: #a5c6d7;
+                }
+
+                &:nth-child(2n+1) {
+                    background-color: #96b4c3;
+                }
+            }
+        }
+    }
+    .paging {
+        list-style:none;
+        li {
+            font-size: 1.2em;
+            margin: 15px 5px;
+            float:left;
+        }
+    }
+}

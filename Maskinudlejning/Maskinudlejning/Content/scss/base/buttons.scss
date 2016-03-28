@@ -1,0 +1,27 @@
+﻿$positive: #60be82;
+$negative: b07171;
+$textLight: #fff;
+.addButton {
+    background-color: $positive;
+    color: $textLight;
+}
+.removeButton {
+    background-color: $negative;
+    color: $textLight;
+
+}
+.small {
+      padding: 2px 5px;
+}
+.medium {
+    padding: $padding;
+}
+
+@media (max-width: $Mobile) {
+    .small {
+        width:100%;
+        padding: 8px;
+        margin: 5px 0 !important;
+       
+    }
+}

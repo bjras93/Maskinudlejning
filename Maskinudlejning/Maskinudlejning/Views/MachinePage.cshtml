@@ -1,0 +1,26 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.MachinePage>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@using System.Globalization;
+@{
+	Layout = "layout.cshtml";
+            var node = Umbraco.TypedContent(Model.Content.GetPropertyValue<int>("machineFolder"));
+}
+<div class="con-1 machines">
+
+	   <ul>
+              @foreach (var item in node.Children.Where("Visible"))
+                {
+                var content = Umbraco.Content(@item.Id);
+				<li>
+					<img src="@Umbraco.Media(content.picture).Url" /><br>
+					<h4>@content.machineName</h4>
+					<p><strong>Price:</strong> @content.Price.ToString("c", new CultureInfo("da-DK"))</p>
+					<p>@content.description</p>
+					<input type="hidden" value="@content.information" />
+                    <a href="#" class="medium addButton add-cart" data-val="@content.Id" data-type="machine">Tilføj til kurv</a>
+                </li>
+				
+            }
+        </ul>
+    <div class="clear"></div>
+</div>

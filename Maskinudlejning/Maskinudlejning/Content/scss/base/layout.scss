@@ -1,0 +1,214 @@
+﻿$padding: 15px;
+
+.header-l {
+    background: url('../img/rockywall.png');
+}
+
+.center {
+    margin: 0 auto;
+}
+
+.menu {
+    .logo {
+        width: 12%;
+    }
+
+    img {
+        margin: 15px 0 0 0;
+        display: inline-block;
+    }
+
+    ul {
+        width: 88%;
+        margin-top: 30px;
+        display: inline-block;
+        list-style: none;
+        position: relative;
+
+        li {
+            display: inline-block;
+
+            &:last-child {
+                float: right;
+            }
+
+            a {
+                display: inline-block;
+                padding: $padding;
+            }
+        }
+    }
+}
+
+.menu-mobile {
+    display: none;
+
+    #menu {
+        margin-right: 15px;
+    }
+}
+
+.footer {
+    padding-top: 20px;
+    border-top: 1px solid #e5e5e5;
+
+    ul {
+        li {
+            margin-bottom: 8px;
+
+            p {
+                margin-bottom: 2px;
+            }
+        }
+    }
+}
+
+.sponsor-list {
+    ul {
+        list-style: none;
+        margin-bottom: 30px;
+
+        li {
+            display: inline-block;
+            margin: 50px 51px 0 15px;
+
+            img {
+                width: 70px;
+            }
+        }
+    }
+}
+
+.cart {
+    p {
+        display: inline-block;
+    }
+
+    i {
+        font-size: 1.6em;
+    }
+}
+
+.content {
+    min-height: 600px;
+}
+
+.container {
+    margin: 0 15%;
+}
+
+.con-1 {
+    width: 100%;
+    padding: $padding;
+}
+
+.con-3-1 {
+    width: 83%;
+    float: left;
+}
+
+.con-1-3 {
+    width: 17%;
+    float: right;
+}
+
+.con-2 {
+    width: 50%;
+    padding: $padding;
+    float: left;
+}
+
+.con-3 {
+    width: 33%;
+    padding: $padding;
+}
+
+.con-4 {
+    width: 25%;
+    padding: $padding;
+}
+
+@media (max-width: $Desktop) {
+}
+
+@media (max-width: $Tablet) {
+
+    .menu {
+        display: none;
+    }
+
+    .menu-mobile {
+        display: inline-block;
+        width: 100%;
+        padding: 2%;
+
+        div {
+            margin: 0;
+        }
+
+        i {
+            font-size: 2.4em;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        ul {
+            width: 100%;
+            list-style: none;
+            position: absolute;
+            text-align: center;
+            left: 0;
+
+            li {
+                a {
+                    border-bottom: 1px solid #e5e5e5;
+                    background-color: #fff;
+                    display: inline-block;
+                    width: 100%;
+                    padding: 20px;
+                }
+            }
+        }
+    }
+
+    .container {
+        margin: 0;
+    }
+
+    .con-3 {
+        width: 50%;
+    }
+
+    .con-4 {
+        width: 50%;
+    }
+    .scrollable {
+        overflow:scroll;
+    }
+}
+
+@media (max-width: $Mobile) {
+
+    .sponsor-list {
+        display: none;
+    }
+    .scrollable {
+        overflow:scroll;
+    }
+    table {
+        width: 100%;
+       
+    }
+
+    .con-2 {
+        width: 100%;
+    }
+
+    .con-3 {
+        width: 100%;
+    }
+
+    .con-4 {
+        width: 100%;
+    }
+}

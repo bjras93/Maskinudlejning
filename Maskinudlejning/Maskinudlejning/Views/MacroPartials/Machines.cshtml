@@ -1,0 +1,27 @@
+﻿@inherits Umbraco.Web.Macros.PartialViewMacroPage
+
+
+
+
+@{ var startNodeId = Model.MacroParameters["startNodeId"]; }
+@if (startNodeId != null)
+{
+    @* Get the starting page *@
+    var startNode = Umbraco.Content(startNodeId);
+    var selection = startNode.Children.Where("Visible");
+
+    if (selection.Any())
+    {
+        <ul>
+            @foreach (var item in selection)
+            {
+				<li>
+                	<img src="@Umbraco.Media(item.picture).Url" />
+                    @item.machineNames
+					@item.description
+                </li>
+				
+            }
+        </ul>
+    }
+}

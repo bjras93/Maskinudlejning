@@ -1,0 +1,26 @@
+
+-------------------------------------------------------------------------------
+   ROBOCOPY     ::     Robust File Copy for Windows                              
+-------------------------------------------------------------------------------
+
+  Started : Monday, March 21, 2016 5:48:58 PM
+   Source : D:\Projects\Maskinudlejning\Maskinudlejning\Maskinudlejning\Umbraco\
+     Dest : D:\Projects\Maskinudlejning\Maskinudlejning\Maskinudlejning\App_Data\NuGetBackup\20160321-174858\Umbraco\
+
+    Files : *.*
+	    
+  Options : *.* /S /E /DCOPY:DA /COPY:DAT /R:1000000 /W:30 
+
+------------------------------------------------------------------------------
+
+	                   0	D:\Projects\Maskinudlejning\Maskinudlejning\Maskinudlejning\Umbraco\
+
+------------------------------------------------------------------------------
+
+               Total    Copied   Skipped  Mismatch    FAILED    Extras
+    Dirs :         1         0         1         0         0         0
+   Files :         0         0         0         0         0         0
+   Bytes :         0         0         0         0         0         0
+   Times :   0:00:00   0:00:00                       0:00:00   0:00:00
+   Ended : Monday, March 21, 2016 5:48:58 PM
+

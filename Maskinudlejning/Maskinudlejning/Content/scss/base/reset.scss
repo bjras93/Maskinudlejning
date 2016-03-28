@@ -1,0 +1,26 @@
+﻿*{
+    box-sizing: border-box;
+}
+p, h1, h2, h3, h4, h5, h6, li, ul, a, html, body, table, th {
+    margin: 0;
+    padding: 0;
+}
+a {
+    text-decoration: none;
+    display:inline-block;
+}
+.clear {
+    clear:both;
+}
+.t-center {
+    text-align:center;
+}
+.hide {
+    display:none;
+}
+.right {
+    float:right;
+}
+.left {
+    float:left;
+}

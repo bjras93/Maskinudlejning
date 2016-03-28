@@ -1,0 +1,3 @@
+﻿ 2016-03-28 11:46:35,521 [P32300/D20/T95] INFO  umbraco.BusinessLogic.Log - Log scrubbed.  Removed all items older than 2016-03-27 11:46:35
+ 2016-03-28 15:46:35,521 [P32300/D20/T95] INFO  umbraco.BusinessLogic.Log - Log scrubbed.  Removed all items older than 2016-03-27 15:46:35
+ 2016-03-28 19:46:35,538 [P32300/D20/T95] INFO  umbraco.BusinessLogic.Log - Log scrubbed.  Removed all items older than 2016-03-27 19:46:35
