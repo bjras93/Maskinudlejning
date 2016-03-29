@@ -479,7 +479,7 @@ var i = 0,
     items = [],
     $items = $('#items'),
     lS = "",
-    urlMachine = 'http://dev.maskinudlejning/umbraco/api/Machine/getMachine/',
+    urlMachine = 'http://dev.maskinudlejning/umbraco/api/MachineApi/getMachine/',
     urlSort = 'http://dev.maskinudlejning/umbraco/api/Sortiment/getsortiment/';
 if (localStorage.getItem('items') != null) {
     lS = JSON.parse(localStorage.getItem('items'));
@@ -497,7 +497,7 @@ if (localStorage.getItem('items') != null) {
 
     }
 }
-$('.add-cart').on('click', function () {
+$('.add-cart').on('click', function (e) {
     var $this = $(this),
         val = $this.data('val'),
         type = $this.data('type'),
@@ -531,6 +531,7 @@ $('.add-cart').on('click', function () {
     if (items.length > 0) {
         localStorage.setItem('items', JSON.stringify(items))
     }
+    e.preventDefault();
 });
 var app = angular.module('myApp', []);
 app.controller('myCtrl', ['$scope', '$http', function ($scope, $http) {
@@ -597,7 +598,7 @@ app.controller('myCtrl', ['$scope', '$http', function ($scope, $http) {
             $items.text('Vare i kurven: ' + i);
         }
 
-
+        event.preventDefault();
     }
 
 
@@ -618,9 +619,10 @@ app.controller('myCtrl', ['$scope', '$http', function ($scope, $http) {
                 }
             }
         }
-        $scope.loadTotal(data, $scope.items, true, false, id)
-        $items.text('Vare i kurven: ' + i)
-        localStorage.setItem('items', JSON.stringify($scope.items))
+        $scope.loadTotal(data, $scope.items, true, false, id);
+        $items.text('Vare i kurven: ' + i);
+        localStorage.setItem('items', JSON.stringify($scope.items));
+        event.preventDefault();
     }
 
     $scope.addItem = function (id, data) {
@@ -630,10 +632,10 @@ app.controller('myCtrl', ['$scope', '$http', function ($scope, $http) {
                 i = i + 1;
             }
         }
-        $scope.loadTotal(data, $scope.items, true, true, id)
-        $items.text('Vare i kurven: ' + i)
-        localStorage.setItem('items', JSON.stringify($scope.items))
-
+        $scope.loadTotal(data, $scope.items, true, true, id);
+        $items.text('Vare i kurven: ' + i);
+        localStorage.setItem('items', JSON.stringify($scope.items));
+        event.preventDefault();
     }
 
 
@@ -673,3 +675,44 @@ $('#menu').on('click', function (e) {
 $(document).on('click', function () {
     $('#mobile').hide();
 });
+var $img = $('.machines ul li img');
+var maxHeight = 0;
+$img.each(function (data) {
+
+    if(this.height > maxHeight)
+    {
+        maxHeight = this.height;
+    }
+
+})
+
+$img.height(maxHeight);
+
+function GetMachine($data) {
+    var $this = $(this),
+        modal = $('.modal'),
+        overlay = $('.overlay-modal');
+    modal.css('top', event.pageY - scrollY)
+    $.get($data, function (data) {
+        modal.html(data);
+        overlay.show();
+        modal.show();
+        $('body').addClass('stop-scrolling');
+
+    });
+    event.preventDefault();
+}
+$('.modal').on('click', function (e) {
+    e.stopPropagation();
+})
+$(document).on('click', function (e) {
+
+    var modal = $('.modal'),
+        overlay = $('.overlay-modal');
+    if(modal.is(':visible'))
+    {
+        modal.hide();
+        overlay.hide();
+        $('body').removeClass('stop-scrolling');
+    }
+})

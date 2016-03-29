@@ -16,7 +16,18 @@
         }
     }
 }
+.modal {
+    .machine-img {
+        width: 50%;
+        float:left;
+    }
+.machine-information {
+    width:50%;
+    padding: $padding;
+    float:left;
 
+}
+}
 @media (max-width: $Tablet) {
 .machines {
     ul {
@@ -30,6 +41,20 @@
 }
 }
 @media (max-width: $Mobile) {
+.overlay-modal {
+    overflow:auto;
+}
+ .modal {
+     width:100%;
+     left:0;
+     margin-bottom:100px;
+    .machine-img {
+        width: 100%;
+    }
+.machine-information {
+    width:100%;
+    }
+ }
 .machines {
     ul {
         li {            

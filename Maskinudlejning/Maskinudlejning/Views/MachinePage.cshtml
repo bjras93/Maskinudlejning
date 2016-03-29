@@ -3,7 +3,7 @@
 @using System.Globalization;
 @{
 	Layout = "layout.cshtml";
-            var node = Umbraco.TypedContent(Model.Content.GetPropertyValue<int>("machineFolder"));
+    var node = Umbraco.TypedContent(Model.Content.GetPropertyValue<int>("machineFolder"));
 }
 <div class="con-1 machines">
 
@@ -13,7 +13,7 @@
                 var content = Umbraco.Content(@item.Id);
 				<li>
 					<img src="@Umbraco.Media(content.picture).Url" /><br>
-					<h4>@content.machineName</h4>
+                    <a href="#" onclick="GetMachine('@Url.SurfaceAction("GetMachine","Machine", new { id= item.Id})');" data-url=""><h4>@content.machineName</h4></a>
 					<p><strong>Price:</strong> @content.Price.ToString("c", new CultureInfo("da-DK"))</p>
 					<p>@content.description</p>
 					<input type="hidden" value="@content.information" />
@@ -23,4 +23,9 @@
             }
         </ul>
     <div class="clear"></div>
+</div>
+<div class="overlay-modal hide">
+    <div class="modal hide">
+
+    </div>
 </div>

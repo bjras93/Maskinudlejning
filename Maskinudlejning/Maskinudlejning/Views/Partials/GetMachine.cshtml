@@ -1,0 +1,19 @@
+﻿@model Maskinudlejning.Models.Machine
+@using System.Globalization;
+
+
+<img src="@Model.picture" class="machine-img" />
+<div class="machine-information">
+    <h3>@Model.machineName</h3>
+    @Html.Raw(Model.information)
+    <br />
+    <strong>Price: @Model.price.ToString("c", new CultureInfo("da-DK"))</strong>
+    <br />
+    <a href="#" class="medium addButton add-cart" data-val="@Model.Id" data-type="machine">Tilføj til kurv</a>
+    
+</div><div class="clear"></div>
+
+
+
+
+<script src="~/Content/js/base/cart.js"></script>
