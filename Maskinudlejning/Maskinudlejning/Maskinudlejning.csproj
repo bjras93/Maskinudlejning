@@ -457,12 +457,12 @@
     <Content Include="Config\Lang\sv-SE.user.xml" />
     <Content Include="Config\Lang\zh-CN.user.xml" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\img\favicon.ico" />
     <Content Include="Content\img\rockywall.png" />
     <Content Include="Content\js\base\cart.js" />
     <Content Include="Content\js\base\menu.js" />
     <Content Include="Content\js\base\usedmachines.js" />
     <Content Include="Content\js\main.js" />
-    <Content Include="Content\js\plugin\angular-locale_da-dk.js" />
     <Content Include="Content\js\plugin\angular.min.js" />
     <Content Include="Content\js\plugin\jquery-1.12.2.min.js" />
     <Content Include="Content\js\plugin\jquery.tablesorter.min.js" />
