@@ -15,6 +15,7 @@ $textLight: #fff;
 }
 .medium {
     padding: $padding;
+    border: none;
 }
 
 @media (max-width: $Mobile) {

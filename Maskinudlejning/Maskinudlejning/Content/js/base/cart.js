@@ -68,8 +68,18 @@ app.controller('myCtrl', ['$scope', '$http', function ($scope, $http) {
         
         if (!type) {
             for (var iI = 0; sItems.length > iI; iI++) {
-                if (data.Id == sItems[iI].Id) {
+                
+                if (data.Id == sItems[iI].Id && data.rentday == undefined) {
                     totalD += sItems[iI].nItems * data.price;
+                }
+                if (data.Id == sItems[iI].Id && data.rentday != undefined) {
+                    if (data.rentday != 0) {
+                        totalD += sItems[iI].nItems * data.rentday;
+                    }
+                    else {
+                        totalD += sItems[iI].nItems * data.price;
+
+                    }
                 }
             }
             $scope.total = totalD;
@@ -77,11 +87,28 @@ app.controller('myCtrl', ['$scope', '$http', function ($scope, $http) {
         else {
             for (var iD = 0; data.length > iD; iD++) {
                 for (var iI = 0; sItems.length > iI; iI++) {
-                    if (data[iD].Id == sItems[iI].Id && sItems[iI].Id == id) {
+                    if (data[iD].Id == sItems[iI].Id && sItems[iI].Id == id && data[iD].rentday == undefined) {
                         if (operator) {
                             totalD = $scope.total + data[iD].price;
                         } else {
                             totalD = $scope.total - data[iD].price;
+                        }
+                    }
+                    if (data[iD].Id == sItems[iI].Id && sItems[iI].Id == id && data[iD].rentday != undefined) {
+                        if (data[iD].rentday == 0) {
+                            if (operator) {
+                                totalD = $scope.total + data[iD].price;
+                            } else {
+                                totalD = $scope.total - data[iD].price;
+                            }
+                        }
+                        else {
+                            if (operator) {
+                                totalD = $scope.total + data[iD].rentday;
+                            } else {
+                                totalD = $scope.total - data[iD].rentday;
+                            }
+
                         }
                     }
                 }

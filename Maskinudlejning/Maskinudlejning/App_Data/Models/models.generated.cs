@@ -18,7 +18,7 @@ using Umbraco.Web;
 using Umbraco.ModelsBuilder;
 using Umbraco.ModelsBuilder.Umbraco;
 
-[assembly: PureLiveAssembly, System.Reflection.AssemblyVersion("0.0.0.4")]
+[assembly: PureLiveAssembly, System.Reflection.AssemblyVersion("0.0.0.2")]
 
 namespace Umbraco.Web.PublishedContentModels
 {
@@ -549,6 +549,76 @@ namespace Umbraco.Web.PublishedContentModels
 		public object MachineFolder
 		{
 			get { return this.GetPropertyValue("machineFolder"); }
+		}
+	}
+
+	/// <summary>Sponsor folder</summary>
+	[PublishedContentModel("sponsorFolder")]
+	public partial class SponsorFolder : PublishedContentModel
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "sponsorFolder";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public SponsorFolder(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<SponsorFolder, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+	}
+
+	/// <summary>Sponsor</summary>
+	[PublishedContentModel("sponsor")]
+	public partial class Sponsor : SponsorFolder
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "sponsor";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public Sponsor(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Sponsor, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Image
+		///</summary>
+		[ImplementPropertyType("image")]
+		public object Image
+		{
+			get { return this.GetPropertyValue("image"); }
+		}
+
+		///<summary>
+		/// Link
+		///</summary>
+		[ImplementPropertyType("link")]
+		public Newtonsoft.Json.Linq.JArray Link
+		{
+			get { return this.GetPropertyValue<Newtonsoft.Json.Linq.JArray>("link"); }
 		}
 	}
 

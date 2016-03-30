@@ -10,12 +10,13 @@
 	   <ul>
               @foreach (var item in node.Children.Where("Visible"))
                 {
-                var content = Umbraco.Content(@item.Id);
+                var content = Umbraco.Content(item.Id);
 				<li>
 					<img src="@Umbraco.Media(content.picture).Url" /><br>
                     <a href="#" onclick="GetMachine('@Url.SurfaceAction("GetMachine","Machine", new { id= item.Id})');" data-url=""><h4>@content.machineName</h4></a>
-					<p><strong>Price:</strong> @content.Price.ToString("c", new CultureInfo("da-DK"))</p>
-					<p>@content.description</p>
+					<p class="machine-price"><strong>Price:</strong> @content.Price.ToString("c", new CultureInfo("da-DK"))</p>
+                    <p class="machine-description">@content.description</p>
+        
 					<input type="hidden" value="@content.information" />
                     <a href="#" class="medium addButton add-cart" data-val="@content.Id" data-type="machine">Tilføj til kurv</a>
                 </li>

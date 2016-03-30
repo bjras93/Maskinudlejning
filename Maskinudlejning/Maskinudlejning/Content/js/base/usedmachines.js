@@ -1,21 +1,29 @@
-﻿var $img = $('.machines ul li img');
-var maxHeight = 0;
-$img.each(function (data) {
+﻿var $img = $('.machines ul li img'),
+    $d = $('.machine-description'),
+    mhD = 0;
+    mhImg = 0;
 
-    if(this.height > maxHeight)
-    {
-        maxHeight = this.height;
-    }
+function EqualHeights(list, maxHeight) {
+    list.each(function () {
+        console.log(this + ' ' + this.clientHeight)
+        if (this.clientHeight > maxHeight) {
+            maxHeight = this.clientHeight;
+        }
 
+    })
+    return maxHeight;
+}
+$(document).ready(function () {
+    $d.height(EqualHeights($d, mhD));
+    $img.height(EqualHeights($img, mhImg));
 })
-
-$img.height(maxHeight);
 
 function GetMachine($data) {
     var $this = $(this),
         modal = $('.modal'),
         overlay = $('.overlay-modal');
-    modal.css('top', event.pageY - scrollY)
+    console.log(scrollY - window.screen.height);
+    modal.css('top', 50)
     $.get($data, function (data) {
         modal.html(data);
         overlay.show();

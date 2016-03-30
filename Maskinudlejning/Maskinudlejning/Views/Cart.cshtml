@@ -1,7 +1,7 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.Cart>
 @using ContentModels = Umbraco.Web.PublishedContentModels;
 @{
-	Layout = "layout.cshtml";
+    Layout = "layout.cshtml";
 }
 <div class="con-1">
     <div class="cart-items" ng-app="myApp" ng-controller="myCtrl">
@@ -19,8 +19,9 @@
                     <tr ng-repeat="item in data | orderBy: '-Id' track by $index ">
                         <td>{{item.partNo}}</td>
                         <td class="t-center" ng-repeat="i in items track by i.Id  " ng-if="item.Id == i.Id"><a href="#" class="small removeButton substract-button" ng-click="substractItem(i.Id, data);">-</a> {{i.nItems}} <a class="small addButton add-button" ng-click="addItem(i.Id, data);" href="#">+</a></td>
-                        <td class="t-center" ng-repeat="i in items track by i.Id " ng-if="item.Id == i.Id">{{i.nItems * item.price | number: 2}}</td>
-                        <td><a href="#" ng-click="removeItem(item.Id, data);" class="medium removeButton">Fjern vare</a></td>
+                        <td class="t-center" ng-repeat="i in items track by i.Id " ng-if="item.Id == i.Id && item.rentday == 0">{{i.nItems * item.price | number: 2}}</td>
+                        <td class="t-center" ng-repeat="i in items track by i.Id " ng-if="item.Id == i.Id && item.rentday != 0">{{i.nItems * item.rentday | number: 2}}</td>
+                        <td class="t-center"><a href="#" ng-click="removeItem(item.Id, data);" class="medium removeButton">Fjern vare</a></td>
                     </tr>
                     <tr></tr>
                 </tbody>
@@ -44,7 +45,8 @@
                             <a href="#" class="small removeButton substract-button" ng-click="substractItem(n.Id, dataMachine);">-</a> {{n.nItems}} <a class="small addButton add-button" ng-click="addItem(n.Id, dataMachine);" href="#">+</a>
                         </td>
                         <td class="t-center" ng-repeat="n in items track by n.Id " ng-if="item.Id == n.Id">{{n.nItems * item.price | currency:",-":2}}</td>
-                        <td><a href="#" ng-click="removeItem(item.Id, dataMachine);" class="medium removeButton">Fjern vare</a></td>
+
+                        <td class="t-center"><a href="#" ng-click="removeItem(item.Id, dataMachine);" class="medium removeButton">Fjern vare</a></td>
                     </tr>
                 </tbody>
             </table>
@@ -55,7 +57,7 @@
         <div ng-if="data.length != 0 || dataMachine.length != 0"><br />
             <strong>Total pris: {{total | currency:",-":2}}</strong>
         </div><br />
-        <input ng-if="data.length != 0 || dataMachine.length != 0" type="submit" ng-click="buyItems(dataMachine, data, items)" value="Køb" />
+        <input ng-if="data.length != 0 || dataMachine.length != 0" type="submit" ng-click="buyItems(dataMachine, data, items)" class="medium addButton" value="Køb" />
         
     </div>
 

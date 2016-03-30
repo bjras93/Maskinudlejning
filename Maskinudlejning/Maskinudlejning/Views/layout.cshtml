@@ -2,6 +2,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <html>
 <head>
+    <title>@CurrentPage.Name</title>
+    <link rel="icon" href="~/Content/img/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/t/dt/jqc-1.12.0,dt-1.10.11/datatables.min.css" />
     <link href="~/Content/css/main.css" rel="stylesheet" />
 </head>
@@ -18,7 +20,7 @@
     <div class="content">
         <div class="container">
             @RenderBody()
-            <div class="sponsor-list">@Umbraco.RenderMacro("sponsorlist", new {mediaId="1055"}) </div>
+            <div class="sponsor-list">@Umbraco.RenderMacro("sponsorlist", new {mediaId="1144"}) </div>
         </div>
     </div>
     <footer class="footer">

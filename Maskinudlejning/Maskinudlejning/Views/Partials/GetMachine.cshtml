@@ -7,7 +7,7 @@
     <h3>@Model.machineName</h3>
     @Html.Raw(Model.information)
     <br />
-    <strong>Price: @Model.price.ToString("c", new CultureInfo("da-DK"))</strong>
+    <p class="machine-price"><strong>Price: @Model.price.ToString("c", new CultureInfo("da-DK"))</strong></p>
     <br />
     <a href="#" class="medium addButton add-cart" data-val="@Model.Id" data-type="machine">Tilføj til kurv</a>
     
